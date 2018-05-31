@@ -9,3 +9,5 @@ Great for beginners using linux.  You still need to run the followig command to 
 
 sudo nvidia-xconfig -a --allow-empty-initial-configuration --cool-bits=31 --use-display-device="DFP-0" --connected-monitor="DFP-0"
 
+Tested on ubuntu OS using GeForce cards on 13 slot ASRock H110 BTC+
+Geforce 1050 ~ 12.4 Mh/s  1060 ~ 23.4 Mh/s   1070 ~ 31.1 Mh/s with current settings in script
