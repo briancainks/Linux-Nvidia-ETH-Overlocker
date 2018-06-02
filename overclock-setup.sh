@@ -1,10 +1,7 @@
 ## Tested on ubuntu OS using GeForce cards on 13 slot ASRock H110 BTC+
 ##
 ## script overclock-setup.sh
-## Author Brian Cain - Donation address if you like it and it helps you 
-## ETH:  0xa9d510ee22de1f45d374d0ba7771c91c72adda8a
-## BTC:  135WPuskGBcaWxkzbnS1z7ud7JnStxPWoB
-## ETC:  0x6014847ebe0bfb1eca6640da98461ec59e0e5e57
+## Author Brian Cain - Donation address if you like it and it helps you ETH:  0xa9d510ee22de1f45d374d0ba7771c91c72adda8a
 ## 
 ## Bash Script to automate the overlocking of GeForce GPU's by finding the card information and settings
 ## overclock properties including power, memory rate and clock frequency.
@@ -13,7 +10,6 @@
 ## 1050 ~ 12.4 Mh/s  1060 ~ 23.4 Mh/s   1070 ~ 31.1 Mh/s   1080 - Don't have any, but setup for settings
 
 ## Set your OUTPUT script name here, you will call it after running overclock-setup.sh
-## In this case ./overclock-cards.sh 
 OVERCLOCKSCRIPT=~/overclock-cards.sh
 echo "sudo nvidia-smi -pm ENABLED | sed \"s/^/  /gi\"" > $OVERCLOCKSCRIPT
 ## Set Overclock Variables By Card Type
@@ -28,7 +24,7 @@ G1060MRATE=1200
 G1060CLOCK=-200
 G1060FAN=60
 ## GeForce 1070 Settings
-G1070PWR=110
+G1070PWR=100
 G1070MRATE=1200
 G1070CLOCK=-200
 G1070FAN=60
@@ -45,6 +41,7 @@ echo "Found "$GPUCOUNT" GPU's"
 gpuno=0
 IFS=$'\n'
 for card in $(nvidia-smi --query-gpu=gpu_name --format=csv|grep -v name) 
+#for card in $(cat test) 
 do     
    #echo "Found "$card
    if [ $gpuno -eq 0 ]
@@ -110,7 +107,7 @@ do
            echo "sudo nvidia-smi -i \"1\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan1]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -118,7 +115,7 @@ do
            echo "sudo nvidia-smi -i \"1\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan1]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
    #echo "gpuno = "$gpuno
@@ -147,7 +144,7 @@ do
            echo "sudo nvidia-smi -i \"2\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan2]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -155,7 +152,7 @@ do
            echo "sudo nvidia-smi -i \"2\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 3 ]
@@ -168,7 +165,7 @@ do
            echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 3 ]
@@ -196,7 +193,7 @@ do
            echo "sudo nvidia-smi -i \"3\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan3]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -204,7 +201,7 @@ do
            echo "sudo nvidia-smi -i \"3\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan3]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 4 ]
@@ -232,7 +229,7 @@ do
            echo "sudo nvidia-smi -i \"4\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan4]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -240,7 +237,7 @@ do
            echo "sudo nvidia-smi -i \"4\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan4]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 5 ]
@@ -268,7 +265,7 @@ do
            echo "sudo nvidia-smi -i \"5\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan5]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -276,7 +273,7 @@ do
            echo "sudo nvidia-smi -i \"5\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan5]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 6 ]
@@ -304,7 +301,7 @@ do
            echo "sudo nvidia-smi -i \"6\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan6]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan:6]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -312,7 +309,7 @@ do
            echo "sudo nvidia-smi -i \"6\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan6]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan;6]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 7 ]
@@ -340,7 +337,7 @@ do
            echo "sudo nvidia-smi -i \"7\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan7]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -348,7 +345,7 @@ do
            echo "sudo nvidia-smi -i \"7\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan7]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 8 ]
@@ -376,7 +373,7 @@ do
            echo "sudo nvidia-smi -i \"8\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan8]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -384,7 +381,7 @@ do
            echo "sudo nvidia-smi -i \"8\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan8]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 9 ]
@@ -412,7 +409,7 @@ do
            echo "sudo nvidia-smi -i \"9\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan9]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -420,7 +417,7 @@ do
            echo "sudo nvidia-smi -i \"9\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan9]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 10 ]
@@ -448,7 +445,7 @@ do
            echo "sudo nvidia-smi -i \"10\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan10]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -456,7 +453,7 @@ do
            echo "sudo nvidia-smi -i \"10\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan10]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 11 ]
@@ -484,7 +481,7 @@ do
            echo "sudo nvidia-smi -i \"11\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan11]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=`echo $card | grep 1080`
        then
@@ -492,7 +489,7 @@ do
            echo "sudo nvidia-smi -i \"11\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
            echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan11]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 12 ]
