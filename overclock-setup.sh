@@ -1,5 +1,5 @@
 ## Tested on ubuntu OS using GeForce cards on 13 slot ASRock H110 BTC+
-##
+## Run manually or through a startup script.  Handy when adding/removing/moving GPU cards
 ## script overclock-setup.sh
 ## Author Brian Cain - Donation address if you like it and it helps you ETH:  0xa9d510ee22de1f45d374d0ba7771c91c72adda8a
 ## 
