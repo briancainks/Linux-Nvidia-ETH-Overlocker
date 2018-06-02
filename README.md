@@ -1,5 +1,5 @@
 # Linux-Nvidia-ETH-Overlocker
-Script to automate overlocking Nvidia cards miing Ethereum on Linux
+Script to automate overlocking Nvidia cards mining Ethereum on Linux
 
 The script needs optimized as I haven't written linux scripts in a while.
 Script will create a file called overclock-cards.sh after identifying your cards and setting up overclock settings
