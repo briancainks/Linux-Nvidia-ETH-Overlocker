@@ -530,3 +530,6 @@ do
    fi
 gpuno=$((gpuno + 1))
 done
+
+echo "Fixing X config files"
+sudo nvidia-xconfig -a --allow-empty-initial-configuration --cool-bits=31 --use-display-device="DFP-0" --connected-monitor="DFP-0"
