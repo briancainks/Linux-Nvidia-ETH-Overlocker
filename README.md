@@ -5,7 +5,7 @@ The script needs optimized as I haven't written linux scripts in a while.
 Script will create a file called overclock-cards.sh after identifying your cards and setting up overclock settings
 via variables setup on top of the file.
 
-Great for beginners using linux.  
+Great for beginners using linux and helps when adding/removing/moving GPU cards.
 
 Added auto-running command to update coolbits and X Config files
 
