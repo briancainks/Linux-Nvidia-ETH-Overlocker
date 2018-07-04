@@ -2,7 +2,7 @@
 ## Run manually or through a startup script.  Handy when adding/removing/moving GPU cards
 ## script overclock-setup.sh
 ## Author Brian Cain - Donation address if you like it and it helps you ETH:  0xa9d510ee22de1f45d374d0ba7771c91c72adda8a
-## 
+##
 ## Bash Script to automate the overlocking of GeForce GPU's by finding the card information and settings
 ## overclock properties including power, memory rate and clock frequency.
 ## Not the cleanest script, but it works.  Will work on optomizing code at a later date
@@ -39,492 +39,492 @@ GPUCOUNT=$(nvidia-smi|grep -c GeForce)
 echo "Found "$GPUCOUNT" GPU's"
 gpuno=0
 IFS=$'\n'
-for card in $(nvidia-smi --query-gpu=gpu_name --format=csv|grep -v name) 
-#for card in $(cat test) 
-do     
+for card in $(nvidia-smi --query-gpu=gpu_name --format=csv|grep -v name)
+#for card in $(cat test)
+do
    #echo "Found "$card
    if [ $gpuno -eq 0 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU0 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"0\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU0 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"0\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU0 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"0\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU0 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"0\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:0]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
-        
+
    fi
-   
+
    if [ $gpuno -eq 1 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU1 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"1\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU1 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"1\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU1 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"1\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU1 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"1\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:1]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:1]/GPUFanControlState=1' -a '[fan:1]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
    #echo "gpuno = "$gpuno
       if [ $gpuno -eq 2 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU2 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"2\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU2 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"2\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU2 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"2\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU2 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"2\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 3 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU3 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"3\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:2]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:2]/GPUFanControlState=1' -a '[fan:2]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 3 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU3 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"3\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU3 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"3\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU3 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"3\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU3 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"3\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:3]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:3]/GPUFanControlState=1' -a '[fan:3]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 4 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU4 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"4\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU4 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"4\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU4 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"4\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU4 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"4\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:4]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:4]/GPUFanControlState=1' -a '[fan:4]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 5 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU5 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"5\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU5 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"5\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU5 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"5\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU5 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"5\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:5]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:5]/GPUFanControlState=1' -a '[fan:5]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 6 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU6 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"6\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan:6]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan:6]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU6 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"6\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan:6]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan:6]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU6 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"6\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan:6]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan:6]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU6 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"6\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan;6]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:6]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:6]/GPUFanControlState=1' -a '[fan;6]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 7 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU7 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"7\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU7 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"7\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU7 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"7\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU7 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"7\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:7]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:7]/GPUFanControlState=1' -a '[fan:7]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 8 ]
-   then 
-	   modno=$(echo $card | grep 1050)
+   then
+           modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU8 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"8\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU8 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"8\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU8 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"8\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU8 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"8\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:8]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:8]/GPUFanControlState=1' -a '[fan:8]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 9 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU9 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"9\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU9 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"9\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU9 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"9\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU9 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"9\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:9]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:9]/GPUFanControlState=1' -a '[fan:9]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 10 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU10 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"10\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU10 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"10\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU10 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"10\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU10 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"10\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:10]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:10]/GPUFanControlState=1' -a '[fan:10]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 11 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU11 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"11\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU11 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"11\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU11 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"11\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU11 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"11\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:11]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:11]/GPUFanControlState=1' -a '[fan:11]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
       if [ $gpuno -eq 12 ]
-   then 
+   then
        modno=$(echo $card | grep 1050)
        if [ $modno ]
        then
            echo "##Card GPU12 is a 1050 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"12\" -pl \"$G1050PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1050MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1050CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1050FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1060)
        then
            echo "##Card GPU12 is a 1060 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"12\" -pl \"$G1060PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1060MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1060CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1060FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1070)
        then
            echo "##Card GPU12 is a 1070 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"12\" -pl \"$G1070PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1070MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1070CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1070FAN'" >> $OVERCLOCKSCRIPT
        elif [ $modno ]
        modno=$(echo $card | grep 1080)
        then
            echo "##Card GPU12 is a 1080 model" >> $OVERCLOCKSCRIPT
            echo "sudo nvidia-smi -i \"12\" -pl \"$G1080PWR\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
-           echo "nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUMemoryTransferRateOffset[3]=$G1080MRATE\"" >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a \"[gpu:12]/GPUGraphicsClockOffset[3]=$G1080CLOCK\""  >> $OVERCLOCKSCRIPT
+           echo "sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -c :0 -a '[gpu:12]/GPUFanControlState=1' -a '[fan:12]/GPUTargetFanSpeed=$G1080FAN'" >> $OVERCLOCKSCRIPT
        fi
    fi
 gpuno=$((gpuno + 1))
@@ -532,4 +532,3 @@ done
 
 echo "Fixing X config files"
 sudo nvidia-xconfig -a --allow-empty-initial-configuration --cool-bits=31 --use-display-device="DFP-0" --connected-monitor="DFP-0"
-
